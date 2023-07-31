@@ -1,0 +1,53 @@
+#!/bin/bash
+
+VKQUAKE=${XDG_CONFIG_HOME:-$HOME/.config}/vkquake
+mkdir -p $VKQUAKE
+
+if [ -z ${APPDIR} ]; then
+export APPDIR=$PWD
+fi
+
+cp -r $APPDIR/usr/bin/{baseq2,ctf,rogue,smd,xatrix,zaero} "$VKQUAKE"/
+
+# create and run dialog
+TITLE="vkQuake 2"
+TEXT="\nEnter command to execute:\n"
+#rcmd=$(yad --width=500 --center --window-icon="gtk-execute" --name="${0##*/}" --title="$TITLE" --text="$TEXT" --image="gtk-execute" --entry --editable --rest="$VKQUAKE")
+rcmd=$(zenity --list --radiolist --title "$TITLE" --column "Select" --column "Menu Item" FALSE "baseq2" FALSE "demo" FALSE "ctf" FALSE "open" --height=250 --width=400)
+
+# run command
+case $rcmd in
+    baseq2)
+    
+    ;;
+    ctf)
+    
+    ;;
+    rogue)
+    
+    ;;
+    smd)
+    
+    ;;
+    xatrix)
+    
+    ;;
+    zaero)
+    
+    ;;
+    demo)
+    ln -s $APPDIR/usr/bin/demo/players $VKQUAKE/baseq2
+    ln -s $APPDIR/usr/bin/demo/pak0.pak $VKQUAKE/baseq2
+    ln -sf $APPDIR/usr/bin/{quake2,ref_glx.so,ref_vk.so} "$VKQUAKE/"
+    cd "$VKQUAKE"
+    ./quake2
+    for i in "$VKQUAKE"/baseq2/{pak0.pak,players}; do unlink $i; done
+    for i in "$VKQUAKE"/{quake2,ref_glx.so,ref_vk.so}; do unlink $i; done
+    ;;
+    open)
+    xdg-open "$VKQUAKE"
+    ;;   
+    *)
+    eval $rcmd &
+    ;;
+esac
