@@ -23,32 +23,12 @@ jobs:
         with:
           version: $VK_VERSION
           cache: true
-      - name: Build vkQuake2 Debug
-        shell: bash
-        run: |
-          cd linux
-          make clean debug
-          cd ..
-      - name: Upload vkQuake2 Debug artifacts
-        uses: actions/upload-artifact@v2.1.3
-        with:
-          name: vkQuake2-Ubuntu-debug-x64
-          path: |
-            linux/debugx64
-            !linux/debugx64/**/*.o
       - name: Build vkQuake2 Release
         shell: bash
         run: |
           cd linux
           make clean release
           cd ..
-      - name: Upload vkQuake2 Release artifacts
-        uses: actions/upload-artifact@v2.1.3
-        with:
-          name: vkQuake2-Ubuntu-release-x64
-          path: |
-            linux/releasex64
-            !linux/releasex64/**/*.o
 
       - name: Build vkQuake2 appImage
         shell: bash
