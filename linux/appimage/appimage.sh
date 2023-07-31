@@ -3,7 +3,7 @@
 curl -SL https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -o appimagetool
 
 mkdir -p AppDir/usr/
-cp -r linux/releasex64 AppDir/usr/bin
+rsync -av --exclude='*.o' --prune-empty-dirs linux/releasex64/ AppDir/usr/bin
 cp linux/appimage/AppRun AppDir/
 chmod +x AppDir/AppRun
 chmod +x AppDir/usr/bin
@@ -20,6 +20,7 @@ curl -sSfL https://github.com/kondrak/vkQuake2/releases/download/1.5.9/vkquake2-
 cd assets
 unzip -qq *.zip **/baseq2/players/* **/baseq2/pak0.pak -d .
 cp -r **/baseq2/* demo
+cp -r demo AppDir/usr/bin/
 cd -
 
 chmod a+x appimagetool
