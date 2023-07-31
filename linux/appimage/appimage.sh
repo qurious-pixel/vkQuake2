@@ -20,8 +20,8 @@ curl -sSfL https://github.com/kondrak/vkQuake2/releases/download/1.5.9/vkquake2-
 cd assets
 unzip -qq *.zip **/baseq2/players/* **/baseq2/pak0.pak -d .
 cp -r **/baseq2/* demo
-cp -r demo AppDir/usr/bin/
 cd -
+cp -r assets/demo AppDir/usr/bin/
 
 chmod a+x appimagetool
 ./appimagetool AppDir/ vkQuake.AppImage
