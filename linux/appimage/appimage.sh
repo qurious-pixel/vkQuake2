@@ -1,7 +1,7 @@
 #!/bin/bash
 
 curl -SL https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -o appimagetool
-curl -sSfLO https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -o linuxdeploy
+curl -sSfL https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -o linuxdeploy
 
 mkdir -p AppDir/usr/
 rsync -av --exclude='*.o' --prune-empty-dirs linux/releasex64/ AppDir/usr/bin
