@@ -2,6 +2,8 @@
 
 curl -SL https://github.com/AppImage/AppImageKit/releases/download/continuous/appimagetool-x86_64.AppImage -o appimagetool
 curl -sSfL https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/linuxdeploy-x86_64.AppImage -o linuxdeploy
+chmod a+x linuxdeploy
+chmod a+x appimagetool
 
 mkdir -p AppDir/usr/
 rsync -av --exclude='*.o' --prune-empty-dirs linux/releasex64/ AppDir/usr/bin
@@ -10,6 +12,7 @@ cp /usr/bin/yad AppDir/usr/bin
 chmod +x AppDir/AppRun
 chmod +x AppDir/usr/bin
 ln -sr AppDir/usr/bin/quake2 AppDir/AppRun
+./linuxdeploy --appdir=AppDir/
 
 cp linux/appimage/vkQuake2_512x512.png AppDir/vkquake.png
 cp linux/appimage/vkquake.desktop AppDir/vkquake.desktop
@@ -26,7 +29,4 @@ cp -r **/baseq2/* demo
 cd -
 cp -r assets/demo AppDir/usr/bin/
 
-chmod a+x linuxdeploy
-chmod a+x appimagetool
-./linuxdeploy --appdir=AppDir/
 ./appimagetool AppDir/ vkQuake.AppImage
