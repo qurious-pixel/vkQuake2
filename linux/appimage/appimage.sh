@@ -14,6 +14,7 @@ cp linux/appimage/vkquake.desktop AppDir/vkquake.desktop
 mkdir -p AppDir/usr/share/applications && cp ./AppDir/vkquake.desktop ./AppDir/usr/share/applications
 mkdir -p AppDir/usr/share/icons && cp ./AppDir/vkquake.png ./AppDir/usr/share/icons
 mkdir -p AppDir/usr/share/icons/hicolor/512x512/apps && cp ./AppDir/vkquake.png ./AppDir/usr/share/icons/hicolor/512x512/apps
+cp linux/appimage/icon.png AppDir/usr/share/icons/
 
 mkdir -p assets/demo
 curl -sSfL https://github.com/kondrak/vkQuake2/releases/download/1.5.9/vkquake2-1.5.9_win64.zip -o assets/vkquake2-1.5.9_win64.zip
