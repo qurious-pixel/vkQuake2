@@ -5,6 +5,7 @@ curl -SL https://github.com/AppImage/AppImageKit/releases/download/continuous/ap
 mkdir -p AppDir/usr/
 rsync -av --exclude='*.o' --prune-empty-dirs linux/releasex64/ AppDir/usr/bin
 cp linux/appimage/AppRun AppDir/
+cp /usr/bin/yad AppDir/usr/bin
 chmod +x AppDir/AppRun
 chmod +x AppDir/usr/bin
 ln -sr AppDir/usr/bin/quake2 AppDir/AppRun
