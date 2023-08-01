@@ -54,16 +54,14 @@ case $rcmd in
     cd "$VKQUAKE" && ./quake2 +set game xatrix
     ;;
     zaero)
-    if [ ! -e "$VKQUAKE/$rcmd/pak0.pak" ]; then MISSING_FILES; exit; fi
+    if [ ! -e "$VKQUAKE/zaero/pak0.pak" ]; then MISSING_FILES; exit; fi
     cd "$VKQUAKE" && ./quake2 +set game zaero
     ;;
     demo)
+    if [ -e "$VKQUAKE/baseq2/pak0.pak" ]; then exit; fi
     ln -s $APPDIR/usr/bin/demo/players $VKQUAKE/baseq2
     ln -s $APPDIR/usr/bin/demo/pak0.pak $VKQUAKE/baseq2
-    ln -sf $APPDIR/usr/bin/{quake2,ref_glx.so,ref_vk.so} "$VKQUAKE/"
-    cd "$VKQUAKE"
-    ./quake2
-    for i in "$VKQUAKE"/{quake2,ref_glx.so,ref_vk.so}; do unlink $i; done
+    cd "$VKQUAKE" && ./quake2
     for i in "$VKQUAKE"/baseq2/{pak0.pak,players}; do unlink $i; done
     ;;
     open)
