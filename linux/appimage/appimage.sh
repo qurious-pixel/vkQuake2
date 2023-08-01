@@ -11,9 +11,8 @@ cp linux/appimage/AppRun AppDir/
 cp /usr/bin/yad AppDir/usr/bin
 chmod +x AppDir/AppRun
 chmod +x AppDir/usr/bin
-ln -sr AppDir/usr/bin/quake2 AppDir/AppRun
 ./linuxdeploy --appdir=AppDir/
-rm {libgdk*,libgio*,libgmodule*,libglib*,libgobject*}
+rm AppDir/usr/lib/{libgdk*,libgio*,libgmodule*,libglib*,libgobject*}
 
 cp linux/appimage/vkQuake2_512x512.png AppDir/vkquake.png
 cp linux/appimage/vkquake.desktop AppDir/vkquake.desktop
